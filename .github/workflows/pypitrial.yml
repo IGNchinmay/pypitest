@@ -46,10 +46,10 @@ jobs:
         python -m build
     - name: Publish
       uses: pypa/gh-action-pypi-publish@release/v1
-The test job is pretty standard - it sets up a matrix to run the tests against multiple Python versions, then runs pytest.
+# The test job is pretty standard - it sets up a matrix to run the tests against multiple Python versions, then runs pytest.
 
-It's set to trigger by this block:
+# It's set to trigger by this block:
 
-on:
-  release:
-    types: [created]
+# on:
+  # release:
+  #   types: [created]
