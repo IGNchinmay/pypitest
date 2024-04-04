@@ -22,11 +22,21 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          
       # Runs a single command using the runners shell
-      - name: Install dependancies, build and publish
+      - name: Install dependancies
         run: |
           python3 -m pip install --upgrade build
-          python3 -m build
           python3 -m pip install twine
-          python3 -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/* -u ${{ secrets.PYPI_TOKEN }} -p ${{ secrets.PYPI_TOKEN_PASSWORD }}
+
+      - name: build and publish
+        env: 
+          TWINE_USERNAME: ${{ secrets.PYPI_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN_PASSWORD }}
+        run:
+          python3 -m build
+          twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
