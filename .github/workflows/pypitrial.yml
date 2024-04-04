@@ -39,4 +39,4 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN_PASSWORD }}
         run: |
           python3 -m build
-          twine upload --repository-url https://upload.pypi.org/legacy/ dist/* --verbose
+          twine upload --repository-url https://upload.pypi.org/legacy/ dist/* --password $TWINE_PASSWORD --verbose
