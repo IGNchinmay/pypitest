@@ -29,4 +29,4 @@ jobs:
           python3 -m pip install --upgrade build
           python3 -m build
           python3 -m pip install twine
-          python3 -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/* -p $PYPI_TOKEN_PASSWORD
+          python3 -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
